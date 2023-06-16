@@ -1,0 +1,12 @@
+.css-ahj2mt-MuiTypography-root {
+    width: 100%;
+}
+
+@media only screen and (max-width: 600px)  {
+    .delete-container{
+        border: none;
+    }
+    .delete{
+        display: none;
+    }
+}
