@@ -39,10 +39,14 @@ const DealsOutlet = () => {
                         </div>
                         <div className={styles.rightProducts}>
                             <div className={styles.rightProduct}>
-                                img
+                                {/* {device.devices.map(device =>
+                                    <DeviceItem key={device.id} device={device} />
+                                )} */}
                             </div>
                             <div className={styles.rightProduct}>
-                                img
+                                {/* {device.devices.map(device =>
+                                    <DeviceItem key={device.id} device={device} />
+                                )} */}
                             </div>
                         </div>
                     </div>

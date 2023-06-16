@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
 import {Pagination} from "react-bootstrap";
@@ -12,6 +12,9 @@ const Pages = observer(() => {
         pages.push(i + 1)
 
     }
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
     return (
         <Pagination className="mt-5">
             {pages.map(page =>
@@ -22,7 +25,11 @@ const Pages = observer(() => {
             )}
 
         </Pagination>
+        
     );
+    
+    
 });
+
 
 export default Pages;

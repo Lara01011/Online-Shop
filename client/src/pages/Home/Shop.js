@@ -14,6 +14,7 @@ import Header from "./sections/Header/Header";
 import NevNavbar from "../../components/NavBar/NewNavBar";
 import DealsOutlet from "./Deals&Outlet/Deals&Outlet";
 import Basket from "../Basket/Basket";
+import Trait from '../../components/Trait/Trait';
 
 
 const Shop = observer(() => {
@@ -60,6 +61,7 @@ const Shop = observer(() => {
                 </Col>
             </Row>
             <DealsOutlet/>
+            <Trait/>
 
         </Container>
     );

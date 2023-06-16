@@ -1,19 +1,15 @@
 import { AppBar, Container, Box } from '@mui/material';
-import React, { useEffect, useState, createContext, useContext } from 'react';
+import React, { useEffect, useState, useContext} from 'react';
 import Call from './Call';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import styles from "./Styles.module.scss";
 import logo from "../../img/logo.png"
-
 import {Link, useNavigate} from 'react-router-dom';
-// import SignIn from "./SignIn";
-// import SignInSignUp from "./SignInSignUp";
 import {observer} from "mobx-react-lite";
 import {ADMIN_ROUTE, BASKET_ROUTE, LOGIN_ROUTE} from "../../utils/consts";
 import {Context} from "../../index";
 import auth from "../../pages/Auth";
 import {Button, Nav} from "react-bootstrap";
-import LocalMallIcon from '@mui/icons-material/LocalMall';
 import jwtDecode from "jwt-decode";
 
 
@@ -61,7 +57,7 @@ const NevNavbar = observer( () => {
         })
 
     return (
-                  <div style={{position:'sticky', top:0, zIndex:999}}>
+                  <div>
         <AppBar position='relative' component="nav" sx={{ background: "#333333"}}>
             <Container>
                 <Box display={"flex"} justifyContent={"space-between"} py={"8.5px"}>

@@ -87,6 +87,7 @@ const Admin = () => {
                         sx={{ width: '100%' }}
                     />
     
+                    <div>
                     <div className={styles.bottom}>
                         <div className={styles.content}>
                             <div productid={device.id} onClick={() => deleteItems(JSON.parse(JSON.stringify(device)))}>
@@ -99,6 +100,7 @@ const Admin = () => {
                                 <h5>quick view</h5>
                             </Link>
                         </div>
+                    </div>
                     </div>
                 </Box>
                 <CardContent className={styles.cardContent}>
