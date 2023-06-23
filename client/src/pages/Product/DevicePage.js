@@ -11,7 +11,42 @@ import {Context} from "../../index";
 
 const DevicePage = () => {
     const [device, setDevice] = useState({info: []})
+    const [busketItems, setCartItemss] = useState()
     const {id} = useParams()
+    const addToBasket = (item) => {
+        const busketItems = localStorage.getItem('busketItems');
+        if(busketItems){
+            let buskItms = JSON.parse(busketItems)
+            if (buskItms.length && buskItms.some((cartItem) => cartItem.product.id === item.id)) {
+                      
+                        const updatedBuskItms = buskItms.map((cartItem) => {
+                            if (cartItem.product.id === item.id) {
+                              return {
+                                ...cartItem,
+                                amount: cartItem.amount + 1
+                              };
+                            }
+                            return cartItem;
+                          });
+                    const addToLocalStore = JSON.stringify(updatedBuskItms)
+                    localStorage.setItem('busketItems', addToLocalStore)
+                    setCartItemss(addToLocalStore)
+
+                        return;
+                }
+                    buskItms.push({product: item, amount: 1})
+                    const addToLocalStore = JSON.stringify(buskItms)
+                    localStorage.setItem('busketItems', addToLocalStore)
+                    setCartItemss(addToLocalStore)
+            }
+            else{
+                const items = JSON.stringify([
+                    {product: item, amount: 1}
+                ])
+                localStorage.setItem('busketItems',items)
+                 setCartItemss(items)
+            }
+    };
 
 
 
@@ -167,7 +202,7 @@ const DevicePage = () => {
                                     </div>
                                 </div>
                                 <div className={styles.buttons}>
-                                    <button className={styles.addToCardBtn} onClick={addToCart} id={device.id}>
+                                    <button className={styles.addToCardBtn} onClick={() => addToBasket(JSON.parse(JSON.stringify(device)))} id={device.id}>
                                         <AddShoppingCart />
                                         ADD TO CART
                                     </button>

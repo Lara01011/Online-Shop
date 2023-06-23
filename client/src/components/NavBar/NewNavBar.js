@@ -11,6 +11,7 @@ import {Context} from "../../index";
 import auth from "../../pages/Auth";
 import {Button, Nav} from "react-bootstrap";
 import jwtDecode from "jwt-decode";
+import TypeBar from '../TypeBar';
 
 
 const NevNavbar = observer( () => {
@@ -59,9 +60,13 @@ const NevNavbar = observer( () => {
     return (
                   <div>
         <AppBar position='relative' component="nav" sx={{ background: "#333333"}}>
+        
             <Container>
-                <Box display={"flex"} justifyContent={"space-between"} py={"8.5px"}>
+            
+            
                 
+                <Box display={"flex"} justifyContent={"space-between"} py={"8.5px"}>
+                <TypeBar/>
                     <Call />
                     <div style={{display:"flex", alignItems:'center'}}><Link to={'/'}>
                         <Box component={"img"} src={logo} alt="logo" />

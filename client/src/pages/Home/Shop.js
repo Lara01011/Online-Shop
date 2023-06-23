@@ -17,6 +17,7 @@ import Basket from "../Basket/Basket";
 import Trait from '../../components/Trait/Trait';
 
 
+
 const Shop = observer(() => {
 
 
@@ -44,13 +45,13 @@ const Shop = observer(() => {
           }, []);
     return (
         <Container>
-
+            
             <Header/>
             <BigSlider/>
             <Row className="mt-3" >
 
                 <Col md={3}>
-                    <TypeBar/>
+                    
                 </Col>
                     <Col md={9}>
                         <BrendBar/>

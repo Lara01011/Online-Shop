@@ -7,6 +7,7 @@ import {Spinner} from "react-bootstrap";
 import Footer from "./components/Footer/Footer";
 import './App.css';
 import NevNavbar from "./components/NavBar/NewNavBar";
+import MainLeftBlock from './pages/Home/MainLeftBlock';
 
 
 
@@ -47,6 +48,7 @@ const App = observer(() => {
     return (
 
         <BrowserRouter>
+             <MainLeftBlock/>
             <NevNavbar/>
             <AppRouter/>
             <Footer/>
