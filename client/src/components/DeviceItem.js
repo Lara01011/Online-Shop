@@ -1,5 +1,5 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {Button, Card, Col, Image} from "react-bootstrap";
+import React, {useEffect, useState} from 'react';
+import {Card,} from "react-bootstrap";
 
 import {Link, useNavigate} from "react-router-dom"
 import {DEVICE_ROUTE} from "../utils/consts";
@@ -46,11 +46,6 @@ const DeviceItem = ({ device, cartItems, setCartItems }) => {
                 localStorage.setItem('busketItems',items)
                  setCartItemss(items)
             }
-    };
-
-    const stop = (e) => {
-        e.stopPropagation();
-        console.log(1);
     };
 
     const goHome = () => {

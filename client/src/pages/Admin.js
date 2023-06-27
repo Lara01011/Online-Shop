@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {Button, Card, Container, Row} from "react-bootstrap";
+import {Button, Card, Container, Col, Row} from "react-bootstrap";
+
 import CreateBrend from "../components/modals/CreateBrend";
 import CreateDevice from "../components/modals/CreateDevice";
 import CreateType from "../components/modals/CreateType";
@@ -62,6 +63,14 @@ const Admin = () => {
             <CreateDevice show={deviceVisible} onHide={() =>setDeviceVisible(false)}/>
             <CreateType show={typeVisible} onHide={() =>setTypeVisible(false)}/>
         </Container>
+        <Container>
+    <div className="badding-items-container">
+      
+      
+      <Col md={12}>
+          
+        
+    
         <Row className="d-flex">
             {device.devices.map(device =>
                 <Card
@@ -118,6 +127,9 @@ const Admin = () => {
             )}
 
         </Row>
+        </Col>
+    </div>
+    </Container>
 </>
 
     );

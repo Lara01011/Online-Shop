@@ -1,25 +1,35 @@
 import React, { useContext, useState, useEffect, useRef } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Context } from '../index';
-import { ListGroup } from 'react-bootstrap';
-import { AiOutlineMenu } from 'react-icons/ai';
+import { Button, Menu, MenuItem, Fade } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 
 const TypeBar = observer(() => {
   const { device } = useContext(Context);
-  const [open, setOpen] = useState(false);
-  const menuRef = useRef(null);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const handleTypeClick = (type) => {
     device.setSelectedType(type);
+    handleClose();
   };
 
-  const toggleMenu = () => {
-    setOpen(!open);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+
+  const handleMenuToggle = () => {
+    setAnchorEl(anchorEl ? null : document.getElementById('type-button'));
   };
 
   const handleClickOutsideMenu = (event) => {
-    if (menuRef.current && !menuRef.current.contains(event.target)) {
-      setOpen(false);
+    if (!anchorEl || !anchorEl.contains(event.target)) {
+      handleClose();
     }
   };
 
@@ -28,34 +38,41 @@ const TypeBar = observer(() => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutsideMenu);
     };
-  }, []);
+  }, [anchorEl]);
 
   return (
     <>
-      <button onClick={toggleMenu} style={{
-    display: 'flex',
-    alignItems: 'center',
-    backgroundColor: '#333333',
-    border: 'none',
-    color: '#777 !important',
-  }}>
-        <AiOutlineMenu size={20} style={{ marginRight: '5px' }} />
-        Toggle Menu
-      </button>
-      {open && (
-        <ListGroup ref={menuRef} style={{position: 'fixed',width: '297px', zIndex: 2000}}>
+      <Button
+        id="type-button"
+        size="large"
+        edge="start"
+        color="inherit"
+        aria-label="menu"
+        sx={{ mr: 2 }}
+        onClick={handleMenuToggle}
+        startIcon={<MenuIcon />}
+      />
+
+      <div>
+        <Menu
+          id="type-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          TransitionComponent={Fade}
+        >
           {device?.types.map((type) => (
-            <ListGroup.Item
+            <MenuItem
               style={{ cursor: 'pointer' }}
-              active={type.id === device.selectedType?.id}
+              selected={type.id === device.selectedType?.id}
               onClick={() => handleTypeClick(type)}
               key={type.id}
             >
               {type.name}
-            </ListGroup.Item>
+            </MenuItem>
           ))}
-        </ListGroup>
-      )}
+        </Menu>
+      </div>
     </>
   );
 });

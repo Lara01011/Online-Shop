@@ -32,9 +32,9 @@ class DeviceStore {
     setTotalCount(count) {
         this._totalCount = count
     }
-    // setLimit(limit) {
-    //     this._limit = limit
-    // }
+     setLimit(limit) {
+        this._limit = limit
+     }
 
     setDevices(devices) {
         this._devices = devices
