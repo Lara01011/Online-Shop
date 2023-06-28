@@ -8,8 +8,7 @@ import { ADMIN_ROUTE, BASKET_ROUTE, LOGIN_ROUTE } from '../../utils/consts';
 import { Context } from '../../index';
 import jwtDecode from 'jwt-decode';
 import TypeBar from '../TypeBar';
-import logo from '../../img/logo.png';
-import Call from './Call';
+import logo from '../../img/Bedding.png';
 import styles from './../NavBar/Styles.module.scss';
 
 const NevNavbar = observer(() => {
@@ -50,50 +49,42 @@ const NevNavbar = observer(() => {
 
   return (
     <>
-      <AppBar position="static" sx={{ background: '#333333' }}>
-        <Toolbar
-          sx={{
-            maxWidth: '1199px',
-            margin: '0 auto',
-          }}
-        >
+      <AppBar position="static" className={styles['custom-app-bar']}>
+        <Toolbar className={styles['toolbar']}>
           <TypeBar />
 
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <Link to={'/'}>
-              <Box component="img" src={logo} alt="logo" />
+          <Typography variant="h6" component="div" className={styles['logo-wrapper']}>
+            <Link to="/" className={styles['logo-link']}>
+              <Box width={50} height={40} component="img" src={logo} alt="logo" className={styles['logo']} />
+              <span className={styles['logo-name']}>Bedding shop</span>
             </Link>
           </Typography>
 
-          <Call />
-
           {token && (
-            <Box component="div" sx={{ display: 'flex' }}>
+            <Box className={styles['user-options']}>
               {jwtDecode(token).role === 'ADMIN' && (
                 <Button variant="outline-light" onClick={admin_panel}>
                   Админ панель
                 </Button>
               )}
-              <Button variant="outline-light" onClick={logOut} className="ml-2 flex-row">
+              <Button variant="outline-light" onClick={logOut} className={`${styles['ml-2']} ${styles['flex-row']}`}>
                 Выйти
               </Button>
             </Box>
           )}
           {!token && (
-            <Box display="flex" justifyContent="space-between" margin="2rem 0">
-              <Box component="div" sx={{ display: 'flex' }}>
-                <Button variant="outline-light" onClick={login}>
-                  Авторизация
-                </Button>
-              </Box>
+            <Box className={styles['user-options']}>
+              <Button variant="outline-light" onClick={login}>
+                Авторизация
+              </Button>
             </Box>
           )}
           <Box
-            component="div"
-            sx={{ display: 'flex', marginLeft: 5, alignItems: 'center', cursor: 'pointer' }}
+            className={`${styles['icon-wrapper']} ${styles['ml-2']} ${styles['flex-row']}`}
+            onClick={basket_link}
           >
-            <span>{count}</span>
-            <ShoppingCartOutlinedIcon onClick={basket_link} className="icon-card" />
+            <span className={styles['count']}>{count}</span>
+            <ShoppingCartOutlinedIcon className={styles['icon-card']} />
           </Box>
         </Toolbar>
       </AppBar>

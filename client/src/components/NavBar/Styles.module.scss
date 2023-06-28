@@ -192,12 +192,74 @@
    
   }
   @media (max-width: 767px) {
-    .body {
-   
+    .toolbar {
+      justify-content: space-evenly;
+    }
+    .user-options {
+      display: flex;
+      
+    }
+    a {
+      text-decoration: none;
+    display: inline-block;
+    padding: 5px;
+    }
+    .logo {
+      filter: brightness(0) invert(1);
     }
   }
+  
 
   .content {
     
   }
+  .parent-component .custom-app-bar {
+    
+  }
+  .custom-app-bar {
+    background: #333333 !important;
+  }
+  
+  .logo-wrapper {
+    display: inline-block;
+  }
+  
+  .logo-link {
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px;
+  }
+  
+  .logo {
+    filter: brightness(0) invert(1);
+    width: 50px;
+    height: 40px;
+  }
+  
+  .logo-name {
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 5px;
+  }
+  
+  .user-options {
+    display: flex;
+  }
+  
+  .cart-icon {
+    display: flex;
+    margin-left: 5px;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .cart-count {
+    /* Add styles for the cart count */
+  }
+  
+  .icon-card {
+    /* Add styles for the cart icon */
+  }
+  
 
