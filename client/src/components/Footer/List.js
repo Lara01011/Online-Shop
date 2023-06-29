@@ -1,6 +1,6 @@
 import React from 'react';
 import { v4 } from 'uuid';
-import styles from "./Styles.module.scss";
+import styles from "./FooterStyles.module.scss";
 
 const List = ({title, content}) => {
     return (

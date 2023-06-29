@@ -119,10 +119,6 @@
   }
 }
 
-.icon-card {
-
-}
-
 .bottom {
   p {
     text-align: center;
@@ -166,10 +162,7 @@
   }
 }
 @media (max-width: 767px) {
-  body {
-    
-    
-  }
+ 
   .content {
     width: 100%;
   height: 100%;
@@ -188,9 +181,7 @@
     margin: 0;
     font-size: 14px;
   }
-  .container {
-   
-  }
+ 
   @media (max-width: 767px) {
     .toolbar {
       justify-content: space-evenly;
@@ -209,15 +200,12 @@
     }
   }
   
-
-  .content {
-    
-  }
-  .parent-component .custom-app-bar {
-    
-  }
+.header{
+  justify-content: space-evenly
+}
   .custom-app-bar {
     background: #333333 !important;
+    
   }
   
   .logo-wrapper {
@@ -254,12 +242,5 @@
     cursor: pointer;
   }
   
-  .cart-count {
-    /* Add styles for the cart count */
-  }
-  
-  .icon-card {
-    /* Add styles for the cart icon */
-  }
-  
+
 

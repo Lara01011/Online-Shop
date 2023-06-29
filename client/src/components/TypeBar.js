@@ -1,35 +1,24 @@
 import React, { useContext, useState, useEffect, useRef } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Context } from '../index';
-import { Button, Menu, MenuItem, Fade } from '@mui/material';
+import { Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 const TypeBar = observer(() => {
   const { device } = useContext(Context);
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [openMenu, setOpenMenu] = useState(false);
+  const menuRef = useRef(null);
 
   const handleTypeClick = (type) => {
     device.setSelectedType(type);
-    handleClose();
-  };
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-
-  const handleMenuToggle = () => {
-    setAnchorEl(anchorEl ? null : document.getElementById('type-button'));
   };
 
   const handleClickOutsideMenu = (event) => {
-    if (!anchorEl || !anchorEl.contains(event.target)) {
-      handleClose();
+    if (menuRef.current && !menuRef.current.contains(event.target)) {
+      setOpenMenu(false);
     }
   };
 
@@ -38,12 +27,15 @@ const TypeBar = observer(() => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutsideMenu);
     };
-  }, [anchorEl]);
+  }, []);
+
+  const handleMenuToggle = () => {
+    setOpenMenu(!openMenu);
+  };
 
   return (
     <>
       <Button
-        id="type-button"
         size="large"
         edge="start"
         color="inherit"
@@ -53,13 +45,18 @@ const TypeBar = observer(() => {
         startIcon={<MenuIcon />}
       />
 
-      <div>
+      <div style={{ display: openMenu ? 'block' : 'none', paddingRight: 'inherit' }}>
         <Menu
-          id="type-menu"
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-          TransitionComponent={Fade}
+          anchorReference="anchorPosition"
+          anchorPosition={{ top: 0, left: 0 }}
+          open={openMenu}
+          onClose={() => setOpenMenu(false)}
+          style={{
+            position: 'fixed',
+            width: '297px',
+            zIndex: 2000,
+          }}
+          ref={menuRef}
         >
           {device?.types.map((type) => (
             <MenuItem

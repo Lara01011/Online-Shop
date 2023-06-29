@@ -1,7 +1,7 @@
 import { Container, Grid } from '@mui/material';
 import React from 'react';
 import logo from '../../img/logo.png';
-import styles from './Styles.module.scss'
+import styles from './FooterStyles.module.scss'
 import { IoCallOutline } from 'react-icons/io5'
 import List from './List';
 import payments from "../../img/payments.png"
@@ -16,7 +16,7 @@ const Footer = () => {
                         <div className={styles.call}>
                             <IoCallOutline />
                             <h5>Got Question? Call us 24/7<br />
-                                <span>+0123 456 789</span>
+                                <span>+374 96 906 097</span>
                             </h5>
                         </div>
                     </Grid>

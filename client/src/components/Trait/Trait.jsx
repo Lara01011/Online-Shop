@@ -1,9 +1,9 @@
 import { Container, Grid } from '@mui/material';
 import React from 'react';
-import styles from "../Trait/Styles.module.scss";
+import styles from "../Trait/TriaitStyles.module.scss";
 import { RocketLaunchRounded, RotateLeftRounded, ErrorOutlineRounded } from '@mui/icons-material';
 import { FaRegLifeRing, FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaPinterest } from "react-icons/fa"
-import { VscArrowSmallRight } from "react-icons/vsc";
+
 import backgroundImage from '../../assets/slider-trit.jpg';
 const Trait = () => {
   return (
@@ -42,7 +42,8 @@ const Trait = () => {
         <div>
           <div >
             <Grid container spacing={1} className={styles.bgBG} >
-             <img src={backgroundImage} alt="My Image"  />
+            <img src={backgroundImage} alt="Badding Shop" key="Badding Shop" />
+
               <div className={styles.gridContent}>
                 <Grid item lg={6} className={styles.grid}>
                   <h1>Shop Social</h1>

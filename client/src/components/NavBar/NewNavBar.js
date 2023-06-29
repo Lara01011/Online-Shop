@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { AppBar, Toolbar, Typography, IconButton, Button, Box } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
+
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { Link, useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
