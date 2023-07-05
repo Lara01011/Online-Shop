@@ -162,6 +162,18 @@
   }
 }
 @media (max-width: 767px) {
+  .custom-app-bar{
+    width: 100%;
+
+    
+  }
+ .toolbar {
+  width: 100%;
+  
+  .user-options{
+    width: 100%;
+   }
+ }
  
   .content {
     width: 100%;
@@ -186,6 +198,26 @@
     .toolbar {
       justify-content: space-evenly;
     }
+    .logo-name{
+      margin-left: 10px;
+      
+        display: inline-block;
+      
+    }
+    .span{
+      display: inline-block;
+    }
+
+    .logo{
+      
+      width: 25px;
+      height: 25px;
+    }
+    .logo-link {
+      text-decoration: none;
+      display: inline-block;
+      padding: 5px;
+    }
     .user-options {
       display: flex;
       
@@ -202,6 +234,7 @@
   
 .header{
   justify-content: space-evenly
+  
 }
   .custom-app-bar {
     background: #333333 !important;
@@ -233,6 +266,7 @@
   
   .user-options {
     display: flex;
+    
   }
   
   .cart-icon {
@@ -240,6 +274,11 @@
     margin-left: 5px;
     align-items: center;
     cursor: pointer;
+  }
+  .Toolbar {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
   }
   
 

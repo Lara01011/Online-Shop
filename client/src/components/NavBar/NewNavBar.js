@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
-
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { Link, useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
@@ -14,8 +13,7 @@ import styles from './../NavBar/Styles.module.scss';
 const NevNavbar = observer(() => {
   let token = localStorage.getItem('token');
   const navigate = useNavigate();
-  const { user } = useContext(Context);
-  const [count, setCount] = useState(0);
+  const { user, device } = useContext(Context);
 
   const logOut = () => {
     user.setUser({});
@@ -39,19 +37,13 @@ const NevNavbar = observer(() => {
     navigate(path);
   };
 
-  useEffect(() => {
-    const items = localStorage.getItem('busketItems');
-    const busketItems = JSON.parse(items);
-    if (busketItems) {
-      setCount(busketItems.length);
-    }
-  }, []);
-
   return (
     <>
       <AppBar position="static" className={styles['custom-app-bar']}>
-        <Toolbar className={styles['toolbar']}>
-          <TypeBar />
+        <Toolbar className={styles['toolbar']} style={{ justifyContent: 'space-around' }}>
+          <div className={styles['toolba']}>
+            <TypeBar />
+          </div>
 
           <Typography variant="h6" component="div" className={styles['logo-wrapper']}>
             <Link to="/" className={styles['logo-link']}>
@@ -79,12 +71,9 @@ const NevNavbar = observer(() => {
               </Button>
             </Box>
           )}
-          <Box
-            className={`${styles['icon-wrapper']} ${styles['ml-2']} ${styles['flex-row']}`}
-            onClick={basket_link}
-          >
-            <span className={styles['count']}>{count}</span>
-            <ShoppingCartOutlinedIcon className={styles['icon-card']} />
+          <Box className={`${styles['icon-wrapper']} ${styles['ml-2']} ${styles['flex-row']}`} onClick={basket_link}>
+            <span className={styles['count']}>{device.count}</span>
+            <ShoppingCartOutlinedIcon fontSize="large" className={styles['icon']} />
           </Box>
         </Toolbar>
       </AppBar>

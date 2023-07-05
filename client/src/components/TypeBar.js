@@ -9,7 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 
 const TypeBar = observer(() => {
   const { device } = useContext(Context);
-  const [openMenu, setOpenMenu] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
   const menuRef = useRef(null);
 
   const handleTypeClick = (type) => {
@@ -18,7 +18,7 @@ const TypeBar = observer(() => {
 
   const handleClickOutsideMenu = (event) => {
     if (menuRef.current && !menuRef.current.contains(event.target)) {
-      setOpenMenu(false);
+      setAnchorEl(null);
     }
   };
 
@@ -29,9 +29,11 @@ const TypeBar = observer(() => {
     };
   }, []);
 
-  const handleMenuToggle = () => {
-    setOpenMenu(!openMenu);
+  const handleMenuToggle = (event) => {
+    setAnchorEl(event.currentTarget);
   };
+
+  const isMenuOpen = Boolean(anchorEl);
 
   return (
     <>
@@ -45,31 +47,29 @@ const TypeBar = observer(() => {
         startIcon={<MenuIcon />}
       />
 
-      <div style={{ display: openMenu ? 'block' : 'none', paddingRight: 'inherit' }}>
-        <Menu
-          anchorReference="anchorPosition"
-          anchorPosition={{ top: 0, left: 0 }}
-          open={openMenu}
-          onClose={() => setOpenMenu(false)}
-          style={{
-            position: 'fixed',
-            width: '297px',
-            zIndex: 2000,
-          }}
-          ref={menuRef}
-        >
-          {device?.types.map((type) => (
-            <MenuItem
-              style={{ cursor: 'pointer' }}
-              selected={type.id === device.selectedType?.id}
-              onClick={() => handleTypeClick(type)}
-              key={type.id}
-            >
-              {type.name}
-            </MenuItem>
-          ))}
-        </Menu>
-      </div>
+      <Menu
+        anchorEl={anchorEl}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        open={isMenuOpen}
+        onClose={() => setAnchorEl(null)}
+        getContentAnchorEl={null}
+        anchorReference="anchorEl"
+        
+      >
+        {device?.types.map((type) => (
+          <MenuItem
+            style={{ cursor: 'pointer' }}
+            selected={type.id === device.selectedType?.id}
+            onClick={() => handleTypeClick(type)}
+            key={type.id}
+          >
+            {type.name}
+          </MenuItem>
+        ))}
+      </Menu>
     </>
   );
 });
