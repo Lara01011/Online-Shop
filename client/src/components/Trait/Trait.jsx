@@ -47,7 +47,7 @@ const Trait = () => {
               <div className={styles.gridContent}>
                 <Grid item lg={6} className={styles.grid}>
                   <h1>Shop Social</h1>
-                  <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci.</p>
+                  <p> 1 Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci.</p>
                   <div className={styles.socialIcons}>
                     <div><FaFacebookF /></div>
                     <div><FaTwitter /></div>

@@ -12,7 +12,7 @@ const Footer = () => {
                 <Grid container spacing={2}>
                     <Grid item sm={6} lg={3} className={styles.grid1} paddingX={"16px"}>
                         <img src={logo} alt="logo" />
-                        <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.</p>
+                        <p>The best part of a healthy lifestyle is a healthy sleep that will ensure you beddingshop.am online store.</p>
                         <div className={styles.call}>
                             <IoCallOutline />
                             <h5>Got Question? Call us 24/7<br />
